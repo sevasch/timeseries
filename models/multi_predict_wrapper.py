@@ -14,6 +14,6 @@ class MultiPredictWrapper(nn.Module):
     def forward(self, x, n_future):
         x_new = x.clone()
         for _ in range(n_future):
-            prediction = self.model(x_new[-len(x):])
-            x_new = torch.cat((x_new, prediction.clone().unsqueeze(0)), dim=0)
-        return x_new[-n_future:]
+            prediction = self.model(x_new[:, -x.shape[1]:])
+            x_new = torch.cat((x_new, prediction), dim=1)
+        return x_new[:, -n_future:]

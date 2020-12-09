@@ -5,3 +5,4 @@ matplotlib==3.3.3
 jupyter==1.0.0
 statsmodels==0.12.1
 tqdm==4.54.1
+wandb==0.10.12
