@@ -1,5 +1,4 @@
 import torch
-import numpy as np
 import matplotlib.pyplot as plt
 
 def visualize_filters(state_dict: dict):
@@ -36,9 +35,6 @@ def visualize_filters(state_dict: dict):
 
 
 if __name__ == '__main__':
-    from models.lstm_seq2seq import LSTMSeq2Seq
-    ckpt = torch.load('/home/sebastian/PycharmProjects/stockfun/models/saved_models/20201113_2141_5-1_features_res/iter192_best.pt')
-    model = ckpt['model']
-    model.load_state_dict(ckpt['model_state_dict'])
-
+    from models.filters_fully_connected import FiltersFullyConnected
+    ckpt = torch.load('/home/sebastian/PycharmProjects/timeseries/models/saved_models/20201211_1425_ffc_deleteme128/best.pt')
     visualize_filters(ckpt['model_state_dict'])
