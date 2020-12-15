@@ -94,7 +94,7 @@ def train_iterative(model, optimizer, loss_fn,
                        'learning_rate': lr}, commit=True)
 
         # SAVE MODEL CHECKPOINT
-        if loss_val == min(it_loss_val):
+        if np.asarray(loss_val).mean() == min(it_loss_val):
             ckpt = {'model': model,
                     'model_state_dict': model.state_dict()}
             torch.save(ckpt, os.path.join(run_dir, 'best.pt'))#'iter' + str(iteration + 1).zfill(2) + ('_best.pt')))
